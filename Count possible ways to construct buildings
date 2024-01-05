@@ -1,0 +1,16 @@
+
+class Solution{
+	public:
+	int TotalWays(int N)
+	{
+	    // Code here
+	    long long mod=(1e9+7), a=1,b=1, s=2;
+	    for(int i=0;i<N-1;i++)
+	    {
+	       a=b%mod;
+	       b=s%mod;
+	       s=(a+b)%mod;
+	    }
+	    return (s%mod*s%mod)%mod;
+	}
+};
