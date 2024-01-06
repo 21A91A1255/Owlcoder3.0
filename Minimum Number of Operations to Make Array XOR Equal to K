@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int minOperations(vector<int>& nums, int k) {
+        int p=nums[0];
+        for(int i=1;i<nums.size();i++)
+        {
+            p=(p^nums[i]);
+        }
+        int c=0;
+        while((k|p)){
+            c+=((k&1)^(p&1));
+            k>>=1;
+            p>>=1;
+        }
+        return c;
+    }
+};
