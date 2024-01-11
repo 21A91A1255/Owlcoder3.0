@@ -1,0 +1,36 @@
+// Online C++ compiler to run C++ program online
+#include<bits/stdc++.h>
+using namespace std;
+long long N=1e6+1;
+vector<long long>primes(N,1);
+void generateprimes()
+{
+    primes[0]=0;
+    primes[1]=0;
+    for(int i=2;i*i<N;i++)
+    {
+        if(primes[i])
+        {
+            for(int j=i*i;j<N;j+=i)
+            {
+                primes[j]=0;
+            }
+        }
+    }
+}
+int main() {
+    long long t;
+    cin>>t;
+    int c=0;
+    generateprimes();
+    for(int i=3;i<=t-2;i+=2)
+    {
+        if(primes[i+2]==1 and primes[i]==1)
+        {
+            c+=1;
+        }
+    }
+    cout<<c;
+
+    return 0;
+}
