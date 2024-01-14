@@ -1,0 +1,48 @@
+class Solution {
+public:
+    bool closeStrings(string word1, string word2) {
+        if(word1.length()!=word2.length()) return false;
+        map<int,int>mp;
+        map<int,int>mp1;
+        vector<int>p;
+        vector<int>q;
+        set<char>s;
+        set<char>s1;
+        for(int i=0;i<word1.size();i++)
+        {
+            mp[word1[i]]++;
+            s.insert(word1[i]);
+        }
+        for(auto t:s)
+        {
+            cout<<t;
+        }
+        for(auto it:mp)
+        {
+            p.push_back(it.second);
+        }
+        for(int i=0;i<word2.size();i++)
+        {
+            mp1[word2[i]]++;
+            s1.insert(word2[i]);
+        }
+        for(auto t1:s1)
+        {
+            cout<<t1;
+        }
+        for(auto it1:mp1)
+        {
+            q.push_back(it1.second);
+        }
+        sort(p.begin(),p.end());
+        sort(q.begin(),q.end());
+        if(p==q && s==s1)
+        {
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    }
+};
