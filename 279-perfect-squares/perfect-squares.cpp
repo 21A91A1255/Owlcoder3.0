@@ -1,7 +1,7 @@
 class Solution {
 public:
     int dp[100001];
-    int fun(int p,vector<int>& arr,int k)
+    int fun(int p,vector<int>& arr,int k,int dp[])
     {
         if(k==0) return 0;
         if(dp[k]!=-1) return dp[k];
@@ -10,7 +10,7 @@ public:
         {
             if(arr[i]<=k)
             {
-                mini=min(mini,1+fun(p,arr,k-arr[i]));
+                mini=min(mini,1+fun(p,arr,k-arr[i],dp));
             }
         }
         return dp[k]=mini;
@@ -27,7 +27,7 @@ public:
         }
         memset(dp,-1,sizeof(dp));
         int p=arr.size();
-        return fun(p,arr,k);
+        return fun(p,arr,k,dp);
     }
 
 };
