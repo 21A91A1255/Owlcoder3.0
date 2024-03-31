@@ -107,26 +107,13 @@ Node* newNode(int val) {
 
 class Solution {
   public:
-    vector<int>l;
-    void fun(Node *root)
-    {
-        if(!root)
-        {
-            return;
-        }
-        l.push_back(root->data);
-        fun(root->left);
-        fun(root->right);
-    }
     int minValue(Node* root) {
-        // Code here
-        fun(root);
-        sort(l.begin(),l.end());
-        if(l.size()==0)
+        if(root==NULL)return -1;
+        while(root->left!=NULL)
         {
-            return -1;
+            root=root->left;
         }
-        return l[0];
+        return root->data;
         
     }
 };
