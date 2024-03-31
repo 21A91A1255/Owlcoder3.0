@@ -98,32 +98,20 @@ struct Node {
 
 class Solution {
   public:
-    vector<int>l;
-    int fun(Node *root,int n,int &m)
-    {
-        if(!root)
-        {
-            return 0;
-        }
-        if(root->key<=n)
-        {
-            l.push_back(root->key);
-        }
-        fun(root->left,n,m);
-        fun(root->right,n,m);
-    }
     int findMaxForN(Node* root, int n) {
-        // code hereretuj 0
-        int m=-1;
-        fun(root,n,m);
-        sort(l.begin(),l.end());
-        if(l.size()==0)
+        // code here
+        int ans=-1;
+        while(root)
         {
-            return -1;
+            if(root->key<=n)
+            {
+                if(root->key>=ans)ans=root->key;
+                root=root->right;
+            }
+            else
+            root=root->left;
         }
-        return l[l.size()-1];
-        //return m;
-        
+        return ans;
     }
 };
 
