@@ -4,7 +4,7 @@ class Solution:
         l=[]
         d={}
         nums.sort()
-        m=[]
+        ans=0
         for i in range(len(nums)-1,-1,-1):
             s=0
             v=nums[i]
@@ -15,11 +15,13 @@ class Solution:
             if s in d:
                 d[s].append(v)
                 if(len(d[s])==2):
-                    m.append(sum(d[s]))
+                    m=d[s][0]+d[s][1]
+                    if(m>ans):
+                        ans=m
             else:
                 d[s]=[]
                 d[s].append(v)
-        if(len(m)!=0):
-            return max(m)
+        if(ans!=0):
+            return ans
         return -1
         
