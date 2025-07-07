@@ -1,34 +1,17 @@
-# User function Template for python3
-
 class Solution:
     def nextLargerElement(self, arr):
-        n = len(arr)
-        ans = [-1] * n
-        stack = []
-        
-        for i in range(n - 1, -1, -1): 
-            while stack and stack[-1] <= arr[i]:
-                stack.pop()
-            if stack:
-                ans[i] = stack[-1]
-            stack.append(arr[i])
-        
-        return ans
+        ans = []
+        st = []
 
+        for i in range(len(arr) - 1, -1, -1):
+            while st and st[-1] <= arr[i]:
+                st.pop()
 
-#{ 
- # Driver Code Starts
-# Initial Template for Python 3
+            if not st:
+                ans.append(-1)
+            else:
+                ans.append(st[-1])
 
-t = int(input())  # number of test cases
-for _ in range(t):
-    arr = list(map(int, input().split()))  # input array
-    s = Solution().nextLargerElement(arr)  # find the next greater elements
+            st.append(arr[i])
 
-    # Output formatting
-    if s:
-        print(" ".join(map(str, s)))  # Print next greater elements
-    else:
-        print("[]")  # Print empty list if no next greater element is found
-    print("~")
-# } Driver Code Ends
+        return ans[::-1]  
