@@ -9,16 +9,14 @@ class Node:
 class Solution:
     def reverse(self, head):
         # code here
-        st=[]
-        temp=head
-        while(temp!=None):
-            st.append(temp.data)
-            temp=temp.next
-        temp=head
-        while(temp!=None):
-            temp.data=st[-1]
-            st.pop()
-            temp=temp.next
-        return head
-        
-        
+        if(head.next==None or head==None):
+            return head
+        prev=None
+        current= head
+        while(current!=None):
+            prev=current.prev
+            current.prev=current.next
+            current.next=prev
+            
+            current=current.prev
+        return prev.prev
