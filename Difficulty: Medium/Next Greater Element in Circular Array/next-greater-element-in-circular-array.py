@@ -1,5 +1,5 @@
 class Solution:
-    def nextLargerElement(self, arr):
+    def nextGreater(self, arr):
         ans = []
         st = []
         r=arr+arr
@@ -16,5 +16,6 @@ class Solution:
         ans=ans[::-1]
         ans=ans[:len(arr)]
         return ans
+
 
                 
